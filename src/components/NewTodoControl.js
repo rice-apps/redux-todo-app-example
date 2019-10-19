@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {connect} from 'react-redux';
 import {addTodo} from '../actions/TodoActions';
 
-const NewTodoControl = ({addTodo}) => (
-    <div>
-        <input style={{display: 'inline-block', padding:8}} type="text" />
-        <button style={{display: 'inline-block', padding:8}} onClick={() => addTodo("adlkjfa;dlfkj", "a;ldkfja;df")}>
-           Add Task!
-        </button>
-    </div>
-);
+const NewTodoControl = ({addTodo}) => {
+    const [inputText, setInputText] = useState("");
+    const childStyle = {display: 'inline-block', margin:8};
+    return (
+        <div>
+            <input 
+                style={childStyle} type="text" 
+                value={inputText} 
+                onChange={event => setInputText(event.target.value)}
+            />
+            <button style={childStyle} 
+            onClick={() => {
+                if (inputText && inputText != "")
+                    addTodo(inputText, 'right now')
+            }}>
+            Add Task!
+            </button>
+        </div>
+    );
+};
 
 export default connect(
     (state) => ({
