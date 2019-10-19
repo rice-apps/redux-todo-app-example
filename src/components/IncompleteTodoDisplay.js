@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {toggleTodo} from '../actions/TodoActions';
 
-const IncompleteTodoDisplay = ({todos, bgColor, removeTodo}) => {
+const IncompleteTodoDisplay = ({todos, bgColor, toggleTodo}) => {
     let filteredTodos = todos.filter(todo => !todo.completed);
     return (
         <div style={{backgroundColor: bgColor}}>
@@ -27,6 +27,6 @@ export default connect(
         bgColor: state.BackgroundReducer.color, 
     }),
     (dispatch) => ({
-        removeTodo: id => dispatch(removeTodo(id))
+        toggleTodo: id => dispatch(toggleTodo(id))
     })
 )(IncompleteTodoDisplay);
