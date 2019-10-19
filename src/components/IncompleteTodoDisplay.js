@@ -1,24 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {toggleTodo} from '../actions/TodoActions';
+import TodoDisplay from './TodoDisplay';
 
 const IncompleteTodoDisplay = ({todos, bgColor, toggleTodo}) => {
     let filteredTodos = todos.filter(todo => !todo.completed);
-    return (
-        <div style={{backgroundColor: bgColor}}>
-            <h1>Incomplete Todos</h1>
-            <ul>
-                {filteredTodos.map(todo => (
-                    <li 
-                    key={todo.ID}
-                    onClick={() => toggleTodo(todo.ID)}
-                    >
-                    {todo.description}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+    return (<TodoDisplay 
+    todosCategory={"Incomplete"}
+    filteredTodos={filteredTodos} 
+    bgColor={bgColor}
+    toggleTodo={toggleTodo}
+    />);
 }
 
 export default connect(

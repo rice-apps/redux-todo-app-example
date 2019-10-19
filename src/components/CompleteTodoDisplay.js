@@ -1,18 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux';
+import {toggleTodo} from '../actions/TodoActions';
+import TodoDisplay from './TodoDisplay';
 
-const CompleteTodoDisplay = ({todos, bgColor}) => {
+const CompleteTodoDisplay = ({todos, bgColor, toggleTodo}) => {
     let filteredTodos = todos.filter(todo => todo.completed);
-    return (
-        <div style={{backgroundColor: bgColor}}>
-            <h1>Complete Todos</h1>
-            <ul>
-                {filteredTodos.map(todo => (
-                    <li key={todo.ID}>{todo.description}</li>
-                ))}
-            </ul>
-        </div>
-    )
+    return (<TodoDisplay 
+    todosCategory={"Complete"}
+    filteredTodos={filteredTodos} 
+    bgColor={bgColor}
+    toggleTodo={toggleTodo}
+    />);
 }
 
 export default connect(
@@ -20,6 +18,9 @@ export default connect(
         todos: state.TodoReducer.todos,
         bgColor: state.BackgroundReducer.color, 
     }),
-    (dispatch) => ({
-    })
+    (dispatch) => {
+        return {
+            toggleTodo: id => dispatch(toggleTodo(id))
+        }
+    }
 )(CompleteTodoDisplay);
