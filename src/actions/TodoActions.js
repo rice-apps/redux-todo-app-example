@@ -20,16 +20,15 @@ export const addTodo = (description, deadline) => {
 }
 
 export const removeTodo = (ID) => {
-    console.log("Removing!");
     return {
         type: REMOVE_TODO,
         ID
     };
 }
 
-export const toggleTodo = (id) => {
+export const toggleTodo = (ID) => {
     return {
         type: TOGGLE_TODO,
-        id
+        ID
     };
 }

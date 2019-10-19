@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux';
 
-import {removeTodo} from '../actions/TodoActions';
+import {toggleTodo} from '../actions/TodoActions';
 
-const IncompleteTodoDisplay = ({todos, removeTodo}) => {
+const IncompleteTodoDisplay = ({todos, toggleTodo}) => {
     let filteredTodos = todos.filter(todo => todo.completed == false);
     return (
         <div>
@@ -12,7 +12,7 @@ const IncompleteTodoDisplay = ({todos, removeTodo}) => {
                 {filteredTodos.map(todo => (
                     <li 
                     key={todo.ID}
-                    onClick={() => removeTodo(todo.ID)}
+                    onClick={() => toggleTodo(todo.ID)}
                     >
                     {todo.description}
                     </li>
@@ -30,7 +30,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            removeTodo: id => dispatch(removeTodo(id))
+            toggleTodo: id => dispatch(toggleTodo(id))
         };
     }
 )(IncompleteTodoDisplay);

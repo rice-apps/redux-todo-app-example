@@ -9,6 +9,8 @@ const BackgroundReducer = (state=defaultBackgroundState, action) => {
     switch(action.type) {
         case ACTIONS.SET_COLOR:
             return {...state, color: action.color};
+        default:
+            return {...state};
     }
 }
 
