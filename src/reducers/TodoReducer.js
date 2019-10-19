@@ -19,12 +19,11 @@ const TodoReducer = (state=defaultTodoState, action) => {
             newTodos = [...state.todos, action.todo];
             return {...state, todos: newTodos};
         case ACTIONS.REMOVE_TODO:
-            console.log(action.ID);
             newTodos = state.todos.filter(todo => todo.ID != action.ID);
             return {...state, todos: newTodos};
         case ACTIONS.TOGGLE_TODO:
             // Find index of todo
-            let idx = state.todos.findIndex(todo.ID == action.ID);
+            let idx = state.todos.findIndex(todo => todo.ID == action.ID);
             newTodos = [...state.todos];
             newTodos[idx].completed = !newTodos[idx].completed;
             return {...state, todos: newTodos};

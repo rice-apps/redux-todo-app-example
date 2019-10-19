@@ -1,10 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux';
 
-import {removeTodo} from '../actions/TodoActions';
+import {toggleTodo} from '../actions/TodoActions';
 
+<<<<<<< HEAD
 const IncompleteTodoDisplay = ({todos, bgColor, removeTodo}) => {
     let filteredTodos = todos.filter(todo => !todo.completed);
+=======
+const IncompleteTodoDisplay = ({todos, toggleTodo}) => {
+    let filteredTodos = todos.filter(todo => todo.completed == false);
+>>>>>>> c0a39d17740f471de86c62ced8ac13b6f25217f3
     return (
         <div style={{backgroundColor: bgColor}}>
             <h1>Incomplete Todos</h1>
@@ -12,7 +17,7 @@ const IncompleteTodoDisplay = ({todos, bgColor, removeTodo}) => {
                 {filteredTodos.map(todo => (
                     <li 
                     key={todo.ID}
-                    onClick={() => removeTodo(todo.ID)}
+                    onClick={() => toggleTodo(todo.ID)}
                     >
                     {todo.description}
                     </li>
