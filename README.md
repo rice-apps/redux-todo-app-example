@@ -1,3 +1,3 @@
-# rice-apps-redux-example
+# rice-apps-todo-example
 
-Describe rice-apps-redux-example here.
+Describe rice-apps-todo-example here.
