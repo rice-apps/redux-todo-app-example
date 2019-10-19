@@ -13,6 +13,9 @@ const store = createStore(Reducer);
 
 console.log(store.getState());
 
-render(<Provider store={store}>
-    <App/>
-</Provider>, document.querySelector('#app'))
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, 
+    document.querySelector('#app')
+)

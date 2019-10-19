@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux';
 
-const CompleteTodoDisplay = ({todos}) => {
-    let filteredTodos = todos.filter(todo => todo.completed == true);
+const CompleteTodoDisplay = ({todos, bgColor}) => {
+    let filteredTodos = todos.filter(todo => todo.completed);
     return (
-        <div>
+        <div style={{backgroundColor: bgColor}}>
             <h1>Complete Todos</h1>
             <ul>
                 {filteredTodos.map(todo => (
@@ -16,12 +16,10 @@ const CompleteTodoDisplay = ({todos}) => {
 }
 
 export default connect(
-    (state) => {
-        return {
-            todos: state.TodoReducer.todos
-        }
-    },
-    (dispatch) => {
-        return {};
-    }
+    (state) => ({
+        todos: state.TodoReducer.todos,
+        bgColor: state.BackgroundReducer.color, 
+    }),
+    (dispatch) => ({
+    })
 )(CompleteTodoDisplay);

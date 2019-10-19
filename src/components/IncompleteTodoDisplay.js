@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 
 import {removeTodo} from '../actions/TodoActions';
 
-const IncompleteTodoDisplay = ({todos, removeTodo}) => {
-    let filteredTodos = todos.filter(todo => todo.completed == false);
+const IncompleteTodoDisplay = ({todos, bgColor, removeTodo}) => {
+    let filteredTodos = todos.filter(todo => !todo.completed);
     return (
-        <div>
+        <div style={{backgroundColor: bgColor}}>
             <h1>Incomplete Todos</h1>
             <ul>
                 {filteredTodos.map(todo => (
@@ -23,14 +23,11 @@ const IncompleteTodoDisplay = ({todos, removeTodo}) => {
 }
 
 export default connect(
-    (state) => {
-        return {
-            todos: state.TodoReducer.todos
-        }
-    },
-    (dispatch) => {
-        return {
-            removeTodo: id => dispatch(removeTodo(id))
-        };
-    }
+    (state) => ({
+        todos: state.TodoReducer.todos,
+        bgColor: state.BackgroundReducer.color, 
+    }),
+    (dispatch) => ({
+        removeTodo: id => dispatch(removeTodo(id))
+    })
 )(IncompleteTodoDisplay);
