@@ -16,8 +16,13 @@ const TodoReducer = (state=defaultTodoState, action) => {
     
     switch(action.type) {
         case ACTIONS.ADD_TODO:
-            newTodos = [...state.todos, action.todo];
-            return {...state, todos: newTodos};
+            // Make sure the id of the new TODO is unique.
+            let newTodo = action.todo;
+            while (state.todos.map(t => t.ID).includes(action.todo.ID)) {
+                newTodo.ID = newTodo.ID + 1;
+            }
+            // Update the store with the new TODO.
+            return {...state, todos: [...state.todos, newTodo]};
         case ACTIONS.REMOVE_TODO:
             newTodos = state.todos.filter(todo => todo.ID != action.ID);
             return {...state, todos: newTodos};

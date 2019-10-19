@@ -3,10 +3,10 @@ export const REMOVE_TODO = "REMOVE_TODO"
 export const TOGGLE_TODO = "TOGGLE_TODO"
 
 export const addTodo = (description, deadline) => {
-    let id = Math.random().toFixed(0);
+    let ID = Math.floor((Math.random() * 100));
     let completed = false;
     let todo = {
-        id,
+        ID,
         description,
         deadline,
         completed
@@ -17,16 +17,12 @@ export const addTodo = (description, deadline) => {
     };
 }
 
-export const removeTodo = (ID) => {
-    return {
-        type: REMOVE_TODO,
-        ID
-    };
-}
+export const removeTodo = (ID) => ({
+    type: REMOVE_TODO,
+    ID
+});
 
-export const toggleTodo = (ID) => {
-    return {
-        type: TOGGLE_TODO,
-        ID
-    };
-}
+export const toggleTodo = (ID) => ({
+    type: TOGGLE_TODO,
+    ID
+});

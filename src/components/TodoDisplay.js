@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TodoDisplay = ({todosCategory, filteredTodos, bgColor, toggleTodo}) => {
-    console.log(toggleTodo);
     return (
         <div style={{backgroundColor: bgColor}}>
             <h1>{todosCategory}</h1>
