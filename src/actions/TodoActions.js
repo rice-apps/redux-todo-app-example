@@ -13,22 +13,23 @@ export const addTodo = (description, deadline) => {
         deadline,
         completed
     };
-    dispatch({
+    return {
         type: ADD_TODO,
         todo
-    });
+    };
 }
 
-export const removeTodo = (id) => {
-    dispatch({
+export const removeTodo = (ID) => {
+    console.log("Removing!");
+    return {
         type: REMOVE_TODO,
-        id
-    });
+        ID
+    };
 }
 
 export const toggleTodo = (id) => {
-    dispatch({
+    return {
         type: TOGGLE_TODO,
         id
-    });
+    };
 }
