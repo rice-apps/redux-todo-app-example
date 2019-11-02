@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
-import TodoReducer from './TodoReducer';
-import BackgroundReducer from './BackgroundReducer';
+import SelectorReducer from './SelectorReducer';
 
 const Reducer = combineReducers({
-    TodoReducer, BackgroundReducer
+    SelectorReducer
 });
 
 export default Reducer;
