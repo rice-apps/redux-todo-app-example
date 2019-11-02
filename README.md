@@ -1,3 +1,3 @@
-# rice-apps-todo-example
+# Selector Example
 
-Describe rice-apps-todo-example here.
+Simple selector which stores the selected option in Redux, enabling the updated value to be used by other components at any point.
